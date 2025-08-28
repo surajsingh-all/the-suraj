@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Suraj Online Services Center - CSC Center आपको सरकारी योजनाएं, बैंकिंग सेवाएं, प्रमाण पत्र और अन्य डिजिटल सेवाएं प्रदान करता है।">
+    <meta name="keywords" content="CSC Center, Government Schemes, Banking Services, Digital Services, The Suraj Online Services Center">
+    <title>The Suraj Online Services Center - CSC Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #FF9933; /* केसरिया - भारत सरकार का रंग */
+            --secondary: #138808; /* हरा - भारत सरकार का रंग */
+            --accent: #000080; /* नीला - भारत सरकार का रंग */
+            --light: #f8f9fa;
+            --dark: #333333;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            20% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-sub {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .lang-toggle label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background-color: var(--light);
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lang-toggle input {
+            display: none;
+        }
+        
+        .lang-slider {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100px;
+            height: 35px;
+            background-color: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        .lang-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            height: 100%;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+            transition: color 0.3s;
+        }
+        
+        .lang-toggle input:checked + .lang-slider .lang-option:first-child {
+            color: var(--white);
+        }
+        
+        .lang-toggle input:not(:checked) + .lang-slider .lang-option:last-child {
+            color: var(--white);
+        }
+        
+        .lang-toggle .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 30px;
+            transition: transform 0.3s;
+            z-index: 1;
+        }
+        
+        .lang-toggle input:checked + .lang-slider .slider {
+            transform: translateX(100%);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 128, 0.85), rgba(0, 0, 128, 0.85)), url('https://images.unsplash.com/photo-1554224154-260325b0536c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 80vh;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #e68619;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 153, 51, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--accent);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .service-btn {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+            margin-top: auto;
+        }
+        
+        .service-btn:hover {
+            color: var(--primary);
+        }
+        
+        .service-btn::after {
+            content: '→';
+            margin-left: 8px;
+            transition: margin-left 0.3s;
+        }
+        
+        .service-btn:hover::after {
+            margin-left: 12px;
+        }
+        
+        /* Schemes Section */
+        .schemes {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .schemes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .scheme-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .scheme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scheme-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 15px 20px;
+        }
+        
+        .scheme-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .scheme-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .scheme-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+        
+        .scheme-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .scheme-benefits {
+            margin-bottom: 20px;
+        }
+        
+        .scheme-benefits h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .scheme-benefits ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .scheme-benefits li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--gray);
+        }
+        
+        .scheme-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .scheme-btn {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-top: auto;
+        }
+        
+        .scheme-btn:hover {
+            background-color: #000066;
+            transform: translateY(-3px);
+        }
+        
+        /* Forms Section */
+        .forms {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .form-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .form-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-content {
+            padding: 25px;
+        }
+        
+        .form-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .form-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-btn {
+            flex: 1;
+            text-align: center;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .form-btn:hover {
+            background-color: #0f6e0f;
+        }
+        
+        .form-btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .form-btn-outline:hover {
+            background-color: rgba(19, 136, 8, 0.1);
+        }
+        
+        /* About Section - Improved */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(255,153,51,0.05)" stroke-width="1"/></svg>');
+            z-index: 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            position: relative;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 128, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            z-index: 1;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 60px;
+            align-items: stretch;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .contact-info {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark);
+        }
+        
+        .faq-question:hover {
+            color: var(--accent);
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            color: var(--gray);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--white);
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .footer-column p,
+        .footer-column li {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-stats {
+                justify-content: center;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .lang-toggle {
+                margin-left: 10px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-outline {
+                display: block;
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .logo-text {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .contact-form,
+            .contact-info {
+                padding: 30px 20px;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#FF9933"></circle>
+                            <path d="M50,15 C65,15 78,25 85,40 C85,55 75,70 60,75 C55,77 50,78 45,77 C30,75 15,65 15,50 C15,35 25,20 40,15 C45,13 50,13 55,15 Z" fill="#138808"></path>
+                            <circle cx="50" cy="50" r="20" fill="#FF9933"></circle>
+                            <circle cx="50" cy="50" r="10" fill="#000080"></circle>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">द सूरज अनलाईन सेवा केंद्र</span>
+                        <span class="logo-sub">The Suraj Online Services Center</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home" data-lang-hi="होम" data-lang-en="Home">होम</a></li>
+                    <li><a href="#services" data-lang-hi="सेवाएं" data-lang-en="Services">सेवाएं</a></li>
+                    <li><a href="#schemes" data-lang-hi="सरकारी योजनाएं" data-lang-en="Govt. Schemes">सरकारी योजनाएं</a></li>
+                    <li><a href="#forms" data-lang-hi="फॉर्म" data-lang-en="Forms">फॉर्म</a></li>
+                    <li><a href="#about" data-lang-hi="हमारे बारे में" data-lang-en="About Us">हमारे बारे में</a></li>
+                    <li><a href="#contact" data-lang-hi="संपर्क" data-lang-en="Contact">संपर्क</a></li>
+                </ul>
+                <div class="lang-toggle">
+                    <label>
+                        <input type="checkbox" id="langToggle">
+                        <div class="lang-slider">
+                            <div class="lang-option">हिंदी</div>
+                            <div class="lang-option">English</div>
+                            <div class="slider"></div>
+                        </div>
+                    </label>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-lang-hi="The Suraj Online Services Center - CSC Center" data-lang-en="The Suraj Online Services Center - CSC Center">The Suraj Online Services Center</h1>
+            <p data-lang-hi="आपकी सेवाओं और सरकारी योजनाओं तक पहुंच का विश्वसनीय माध्यम" data-lang-en="Your reliable access to services and government schemes">आपकी सेवाओं और सरकारी योजनाओं तक पहुंच का विश्वसनीय माध्यम</p>
+            <a href="#services" class="btn" data-lang-hi="सेवाएं देखें" data-lang-en="View Services">सेवाएं देखें</a>
+            <a href="#schemes" class="btn btn-outline" data-lang-hi="योजनाएं जानें" data-lang-en="Know Schemes">योजनाएं जानें</a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-hi="हमारी सेवाएं" data-lang-en="Our Services">हमारी सेवाएं</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">📋</div>
+                        <h3 data-lang-hi="सरकारी फॉर्म" data-lang-en="Government Forms">सरकारी फॉर्म</h3>
+                        <p data-lang-hi="विभिन्न सरकारी विभागों के फॉर्म भरने और जमा करने की सुविधा। हम आपको फॉर्म भरने में पूरी सहायता प्रदान करते हैं।" data-lang-en="Facility to fill and submit forms of various government departments. We provide complete assistance in filling forms.">
+                           विभिन्न सरकारी विभागों के फॉर्म भरने और जमा करने की सुविधा। हम आपको फॉर्म भरने में पूरी सहायता प्रदान करते हैं।</p>
+                        <a href="#forms" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">💳</div>
+                        <h3 data-lang-hi="बैंकिंग सेवाएं" data-lang-en="Banking Services">बैंकिंग सेवाएं</h3>
+                        <p data-lang-hi="बैंक खाता खोलने, डिजिटल भुगतान, मनी ट्रांसफर और अन्य बैंकिंग सेवाएं आसानी से प्राप्त करें।" data-lang-en="Easily get bank account opening, digital payments, money transfer and other banking services.">
+                           बैंक खाता खोलने, डिजिटल भुगतान, मनी ट्रांसफर और अन्य बैंकिंग सेवाएं आसानी से प्राप्त करें।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">📝</div>
+                        <h3 data-lang-hi="प्रमाण पत्र सेवाएं" data-lang-en="Certificate Services">प्रमाण पत्र सेवाएं</h3>
+                        <p data-lang-hi="जन्म प्रमाण पत्र, मृत्यु प्रमाण पत्र, आधार कार्ड, पैन कार्ड आदि बनवाने की सुविधा।" data-lang-en="Facility to make birth certificate, death certificate, Aadhaar card, PAN card etc.">
+                           जन्म प्रमाण पत्र, मृत्यु प्रमाण पत्र, आधार कार्ड, पैन कार्ड आदि बनवाने की सुविधा।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">💼</div>
+                        <h3 data-lang-hi="बीमा सेवाएं" data-lang-en="Insurance Services">बीमा सेवाएं</h3>
+                        <p data-lang-hi="जीवन बीमा, स्वास्थ्य बीमा, दुर्घटना बीमा और अन्य बीमा पॉलिसी की जानकारी और सेवाएं।" data-lang-en="Information and services for life insurance, health insurance, accident insurance and other insurance policies.">
+                           जीवन बीमा, स्वास्थ्य बीमा, दुर्घटना बीमा और अन्य बीमा पॉलिसी की जानकारी और सेवाएं।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">🌐</div>
+                        <h3 data-lang-hi="डिजिटल सेवाएं" data-lang-en="Digital Services">डिजिटल सेवाएं</h3>
+                        <p data-lang-hi="ई-मेल आईडी बनाना, ऑनलाइन आवेदन, डिजिटल सिग्नेचर और अन्य डिजिटल सेवाएं प्रदान करना।" data-lang-en="Creating email IDs, online applications, digital signatures and providing other digital services.">
+                           ई-मेल आईडी बनाना, ऑनलाइन आवेदन, डिजिटल सिग्नेचर और अन्य डिजिटल सेवाएं प्रदान करना।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">📚</div>
+                        <h3 data-lang-hi="शिक्षा सेवाएं" data-lang-en="Education Services">शिक्षा सेवाएं</h3>
+                        <p data-lang-hi="छात्रवृत्ति फॉर्म, ऑनलाइन प्रवेश, परीक्षा फॉर्म और अन्य शिक्षा संबंधी सेवाएं प्रदान करना।" data-lang-en="Providing scholarship forms, online admissions, exam forms and other education related services.">
+                           छात्रवृत्ति फॉर्म, ऑनलाइन प्रवेश, परीक्षा फॉर्म और अन्य शिक्षा संबंधी सेवाएं प्रदान करना।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">🏠</div>
+                        <h3 data-lang-hi="आवास सेवाएं" data-lang-en="Housing Services">आवास सेवाएं</h3>
+                        <p data-lang-hi="प्रधानमंत्री आवास योजना, ग्रामीण आवास योजना और अन्य आवास संबंधी योजनाओं के लिए आवेदन करने की सुविधा।" data-lang-en="Facility to apply for Pradhan Mantri Awas Yojana, Rural Housing Scheme and other housing related schemes.">
+                           प्रधानमंत्री आवास योजना, ग्रामीण आवास योजना और अन्य आवास संबंधी योजनाओं के लिए आवेदन करने की सुविधा।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">🌾</div>
+                        <h3 data-lang-hi="कृषि सेवाएं" data-lang-en="Agriculture Services">कृषि सेवाएं</h3>
+                        <p data-lang-hi="किसान क्रेडिट कार्ड, फसल बीमा, खाद बीज अनुदान और अन्य कृषि संबंधी सेवाएं प्रदान करना।" data-lang-en="Providing Kisan Credit Card, crop insurance, fertilizer seed subsidy and other agriculture related services.">
+                           किसान क्रेडिट कार्ड, फसल बीमा, खाद बीज अनुदान और अन्य कृषि संबंधी सेवाएं प्रदान करना।</p>
+                        <a href="#contact" class="service-btn" data-lang-hi="और जानें" data-lang-en="Know More">और जानें</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Schemes Section -->
+    <section id="schemes" class="schemes">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-hi="सरकारी योजनाएं" data-lang-en="Government Schemes">सरकारी योजनाएं</h2>
+            </div>
+            <div class="schemes-grid">
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <h3 data-lang-hi="प्रधानमंत्री आवास योजना" data-lang-en="Pradhan Mantri Awas Yojana">प्रधानमंत्री आवास योजना</h3>
+                        <p data-lang-hi="आवास और शहरी मामलों का मंत्रालय" data-lang-en="Ministry of Housing and Urban Affairs">आवास और शहरी मामलों का मंत्रालय</p>
+                    </div>
+                    <div class="scheme-content">
+                        <p data-lang-hi="यह योजना ग्रामीण और शहरी क्षेत्रों में रहने वाले गरीब परिवारों को पक्का मकान बनाने में वित्तीय सहायता प्रदान करती है।" data-lang-en="This scheme provides financial assistance to poor families living in rural and urban areas to build pucca houses.">
+                           यह योजना ग्रामीण और शहरी क्षेत्रों में रहने वाले गरीब परिवारों को पक्का मकान बनाने में वित्तीय सहायता प्रदान करती है।</p>
+                        <div class="scheme-benefits">
+                            <h4 data-lang-hi="मुख्य लाभ:" data-lang-en="Key Benefits:">मुख्य लाभ:</h4>
+                            <ul>
+                                <li data-lang-hi="ग्रामीण क्षेत्रों में ₹1,20,000 तक की सहायता" data-lang-en="Assistance up to ₹1,20,000 in rural areas">ग्रामीण क्षेत्रों में ₹1,20,000 तक की सहायता</li>
+                                <li data-lang-hi="शहरी क्षेत्रों में ₹2,50,000 तक की सहायता" data-lang-en="Assistance up to ₹2,50,000 in urban areas">शहरी क्षेत्रों में ₹2,50,000 तक की सहायता</li>
+                                <li data-lang-hi="सीधे बैंक खाते में धनराशि हस्तांतरण" data-lang-en="Direct fund transfer to bank account">सीधे बैंक खाते में धनराशि हस्तांतरण</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="scheme-btn" data-lang-hi="आवेदन करें" data-lang-en="Apply Now">आवेदन करें</a>
+                    </div>
+                </div>
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <h3 data-lang-hi="प्रधानमंत्री किसान सम्मान निधि" data-lang-en="Pradhan Mantri Kisan Samman Nidhi">प्रधानमंत्री किसान सम्मान निधि</h3>
+                        <p data-lang-hi="कृषि और किसान कल्याण मंत्रालय" data-lang-en="Ministry of Agriculture and Farmers Welfare">कृषि और किसान कल्याण मंत्रालय</p>
+                    </div>
+                    <div class="scheme-content">
+                        <p data-lang-hi="यह योजना छोटे और सीमांत किसानों को आय सहायता प्रदान करती है ताकि वे अपनी कृषि आवश्यकताओं को पूरा कर सकें।" data-lang-en="This scheme provides income assistance to small and marginal farmers so that they can fulfill their agricultural needs.">
+                           यह योजना छोटे और सीमांत किसानों को आय सहायता प्रदान करती है ताकि वे अपनी कृषि आवश्यकताओं को पूरा कर सकें।</p>
+                        <div class="scheme-benefits">
+                            <h4 data-lang-hi="मुख्य लाभ:" data-lang-en="Key Benefits:">मुख्य लाभ:</h4>
+                            <ul>
+                                <li data-lang-hi="प्रति वर्ष ₹6,000 की आय सहायता" data-lang-en="Income assistance of ₹6,000 per year">प्रति वर्ष ₹6,000 की आय सहायता</li>
+                                <li data-lang-hi="तीन किस्तों में सीधे बैंक खाते में हस्तांतरण" data-lang-en="Direct transfer to bank account in three installments">तीन किस्तों में सीधे बैंक खाते में हस्तांतरण</li>
+                                <li data-lang-hi="किसानों की आर्थिक स्थिति में सुधार" data-lang-en="Improvement in economic condition of farmers">किसानों की आर्थिक स्थिति में सुधार</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="scheme-btn" data-lang-hi="आवेदन करें" data-lang-en="Apply Now">आवेदन करें</a>
+                    </div>
+                </div>
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <h3 data-lang-hi="उज्ज्वला योजना" data-lang-en="Ujjwala Yojana">उज्ज्वला योजना</h3>
+                        <p data-lang-hi="पेट्रोलियम और प्राकृतिक गैस मंत्रालय" data-lang-en="Ministry of Petroleum and Natural Gas">पेट्रोलियम और प्राकृतिक गैस मंत्रालय</p>
+                    </div>
+                    <div class="scheme-content">
+                        <p data-lang-hi="यह योजना गरीब परिवारों को मुफ्त एलपीजी कनेक्शन प्रदान करती है ताकि वे स्वच्छ ईंधन का उपयोग कर सकें।" data-lang-en="This scheme provides free LPG connections to poor families so that they can use clean fuel.">
+                           यह योजना गरीब परिवारों को मुफ्त एलपीजी कनेक्शन प्रदान करती है ताकि वे स्वच्छ ईंधन का उपयोग कर सकें।</p>
+                        <div class="scheme-benefits">
+                            <h4 data-lang-hi="मुख्य लाभ:" data-lang-en="Key Benefits:">मुख्य लाभ:</h4>
+                            <ul>
+                                <li data-lang-hi="मुफ्त एलपीजी कनेक्शन" data-lang-en="Free LPG connection">मुफ्त एलपीजी कनेक्शन</li>
+                                <li data-lang-hi="स्टोव और पहला रिफिल फ्री" data-lang-en="Free stove and first refill">स्टोव और पहला रिफिल फ्री</li>
+                                <li data-lang-hi="महिला सशक्तिकरण में सहायता" data-lang-en="Assistance in women empowerment">महिला सशक्तिकरण में सहायता</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="scheme-btn" data-lang-hi="आवेदन करें" data-lang-en="Apply Now">आवेदन करें</a>
+                    </div>
+                </div>
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <h3 data-lang-hi="प्रधानमंत्री जनधन योजना" data-lang-en="Pradhan Mantri Jan Dhan Yojana">प्रधानमंत्री जनधन योजना</h3>
+                        <p data-lang-hi="वित्त मंत्रालय" data-lang-en="Ministry of Finance">वित्त मंत्रालय</p>
+                    </div>
+                    <div class="scheme-content">
+                        <p data-lang-hi="यह योजना गरीब लोगों को बैंकिंग सेवाओं तक पहुंच प्रदान करने और उन्हें वित्तीय रूप से सशक्त बनाने के लिए है।" data-lang-en="This scheme is aimed at providing banking services to the poor and making them financially empowered.">
+                           यह योजना गरीब लोगों को बैंकिंग सेवाओं तक पहुंच प्रदान करने और उन्हें वित्तीय रूप से सशक्त बनाने के लिए है।</p>
+                        <div class="scheme-benefits">
+                            <h4 data-lang-hi="मुख्य लाभ:" data-lang-en="Key Benefits:">मुख्य लाभ:</h4>
+                            <ul>
+                                <li data-lang-hi="शून्य बैलेंस बैंक खाता" data-lang-en="Zero balance bank account">शून्य बैलेंस बैंक खाता</li>
+                                <li data-lang-hi="रुपे कार्ड और दुर्घटना बीमा" data-lang-en="RuPay card and accident insurance">रुपे कार्ड और दुर्घटना बीमा</li>
+                                <li data-lang-hi="ओवरड्राफ्ट सुविधा" data-lang-en="Overdraft facility">ओवरड्राफ्ट सुविधा</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="scheme-btn" data-lang-hi="आवेदन करें" data-lang-en="Apply Now">आवेदन करें</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Forms Section -->
+    <section id="forms" class="forms">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-hi="सरकारी फॉर्म" data-lang-en="Government Forms">सरकारी फॉर्म</h2>
+            </div>
+            <div class="forms-grid">
+                <div class="form-card">
+                    <div class="form-content">
+                        <h3><span class="form-icon">🆔</span> <span data-lang-hi="आधार कार्ड फॉर्म" data-lang-en="Aadhaar Card Form">आधार कार्ड फॉर्म</span></h3>
+                        <p data-lang-hi="नया आधार कार्ड बनाने, अपडेट करने या सुधार करने के लिए फॉर्म।" data-lang-en="Form for making new Aadhaar card, updating or correcting.">
+                           नया आधार कार्ड बनाने, अपडेट करने या सुधार करने के लिए फॉर्म।</p>
+                        <div class="form-actions">
+                            <a href="#" class="form-btn" data-lang-hi="डाउनलोड" data-lang-en="Download">डाउनलोड</a>
+                            <a href="#" class="form-btn form-btn-outline" data-lang-hi="ऑनलाइन भरें" data-lang-en="Fill Online">ऑनलाइन भरें</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-card">
+                    <div class="form-content">
+                        <h3><span class="form-icon">📄</span> <span data-lang-hi="पैन कार्ड फॉर्म" data-lang-en="PAN Card Form">पैन कार्ड फॉर्म</span></h3>
+                        <p data-lang-hi="नया पैन कार्ड बनाने या पुराने पैन कार्ड में सुधार करने के लिए फॉर्म।" data-lang-en="Form for making new PAN card or correcting old PAN card.">
+                           नया पैन कार्ड बनाने या पुराने पैन कार्ड में सुधार करने के लिए फॉर्म।</p>
+                        <div class="form-actions">
+                            <a href="#" class="form-btn" data-lang-hi="डाउनलोड" data-lang-en="Download">डाउनलोड</a>
+                            <a href="#" class="form-btn form-btn-outline" data-lang-hi="ऑनलाइन भरें" data-lang-en="Fill Online">ऑनलाइन भरें</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-card">
+                    <div class="form-content">
+                        <h3><span class="form-icon">📜</span> <span data-lang-hi="आय प्रमाण पत्र फॉर्म" data-lang-en="Income Certificate Form">आय प्रमाण पत्र फॉर्म</span></h3>
+                        <p data-lang-hi="आय प्रमाण पत्र बनाने या डुप्लीकेट प्राप्त करने के लिए फॉर्म।" data-lang-en="Form for making income certificate or obtaining duplicate.">
+                           आय प्रमाण पत्र बनाने या डुप्लीकेट प्राप्त करने के लिए फॉर्म।</p>
+                        <div class="form-actions">
+                            <a href="#" class="form-btn" data-lang-hi="डाउनलोड" data-lang-en="Download">डाउनलोड</a>
+                            <a href="#" class="form-btn form-btn-outline" data-lang-hi="ऑनलाइन भरें" data-lang-en="Fill Online">ऑनलाइन भरें</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-card">
+                    <div class="form-content">
+                        <h3><span class="form-icon">🏷️</span> <span data-lang-hi="जाति प्रमाण पत्र फॉर्म" data-lang-en="Caste Certificate Form">जाति प्रमाण पत्र फॉर्म</span></h3>
+                        <p data-lang-hi="जाति प्रमाण पत्र बनाने या डुप्लीकेट प्राप्त करने के लिए फॉर्म।" data-lang-en="Form for making caste certificate or obtaining duplicate.">
+                           जाति प्रमाण पत्र बनाने या डुप्लीकेट प्राप्त करने के लिए फॉर्म।</p>
+                        <div class="form-actions">
+                            <a href="#" class="form-btn" data-lang-hi="डाउनलोड" data-lang-en="Download">डाउनलोड</a>
+                            <a href="#" class="form-btn form-btn-outline" data-lang-hi="ऑनलाइन भरें" data-lang-en="Fill Online">ऑनलाइन भरें</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-card">
+                    <div class="form-content">
+                        <h3><span class="form-icon">🏠</span> <span data-lang-hi="निवास प्रमाण पत्र फॉर्म" data-lang-en="Domicile Certificate Form">निवास प्रमाण पत्र फॉर्म</span></h3>
+                        <p data-lang-hi="निवास प्रमाण पत्र बनाने या डुप्लीकेट प्राप्त करने के लिए फॉर्म।" data-lang-en="Form for making domicile certificate or obtaining duplicate.">
+                           निवास प्रमाण पत्र बनाने या डुप्लीकेट प्राप्त करने के लिए फॉर्म।</p>
+                        <div class="form-actions">
+                            <a href="#" class="form-btn" data-lang-hi="डाउनलोड" data-lang-en="Download">डाउनलोड</a>
+                            <a href="#" class="form-btn form-btn-outline" data-lang-hi="ऑनलाइन भरें" data-lang-en="Fill Online">ऑनलाइन भरें</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-card">
+                    <div class="form-content">
+                        <h3><span class="form-icon">📋</span> <span data-lang-hi="अन्य सरकारी फॉर्म" data-lang-en="Other Government Forms">संबल कार्ड फॉर्म</span></h3>
+                        <p data-lang-hi="विभिन्न सरकारी विभागों के अन्य फॉर्म जैसे वोटर आईडी, ड्राइविंग लाइसेंस आदि के लिए फॉर्म।" data-lang-en="Forms for other government departments like Voter ID, Driving License etc.">
+                           विभिन्न सरकारी विभागों के अन्य फॉर्म जैसे वोटर आईडी, ड्राइविंग लाइसेंस आदि के लिए फॉर्म।</p>
+                        <div class="form-actions">
+                            <a href="#" class="form-btn" data-lang-hi="डाउनलोड" data-lang-en="Download">डाउनलोड</a>
+                            <a href="#" class="form-btn form-btn-outline" data-lang-hi="ऑनलाइन भरें" data-lang-en="Fill Online">ऑनलाइन भरें</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section - Improved -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-hi="हमारे बारे में" data-lang-en="About Us">हमारे बारे में</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-badge" data-lang-hi="विश्वसनीय सेवाएं 2018 से" data-lang-en="Reliable Services Since 2018">विश्वसनीय सेवाएं 2021 से</div>
+                    <h3 data-lang-hi="The Suraj Online Services Center" data-lang-en="The Suraj Online Services Center">The Suraj Online Services Center</h3>
+                    <p data-lang-hi="The Suraj Online Services Center एक प्रतिष्ठित सेवा केंद्र है जो ग्रामीण और शहरी क्षेत्रों में रहने वाले लोगों को सरकारी और निजी सेवाएं प्रदान करता है। हमारा उद्देश्य डिजिटल भारत के सपने को साकार करने में मदद करना है।" data-lang-en="The Suraj Online Services Center is a prestigious service center that provides government and private services to people living in rural and urban areas. Our aim is to help realize the dream of Digital India.">
+                       The Suraj Online Services Center एक प्रतिष्ठित सेवा केंद्र है जो ग्रामीण और शहरी क्षेत्रों में रहने वाले लोगों को सरकारी और निजी सेवाएं प्रदान करता है। हमारा उद्देश्य डिजिटल भारत के सपने को साकार करने में मदद करना है।</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-hi="अनुभवी टीम" data-lang-en="Experienced Team">अनुभवी टीम</h4>
+                                <p data-lang-hi="हमारी टीम में विभिन्न क्षेत्रों के विशेषज्ञ शामिल हैं" data-lang-en="Our team includes experts from various fields">हमारी टीम में विभिन्न क्षेत्रों के विशेषज्ञ शामिल हैं</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-hi="विश्वसनीयता" data-lang-en="Reliability">विश्वसनीयता</h4>
+                                <p data-lang-hi="हम समय पर और गुणवत्तापूर्ण सेवाएं प्रदान करते हैं" data-lang-en="We provide timely and quality services">हम समय पर और गुणवत्तापूर्ण सेवाएं प्रदान करते हैं</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-hi="पुरस्कार विजेता" data-lang-en="Award Winner">पुरस्कार विजेता</h4>
+                                <p data-lang-hi="उत्कृष्ट सेवाओं के लिए कई पुरस्कार प्राप्त" data-lang-en="Received multiple awards for excellent services">उत्कृष्ट सेवाओं के लिए कई पुरस्कार प्राप्त</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-hi="व्यापक पहुंच" data-lang-en="Wide Reach">व्यापक पहुंच</h4>
+                                <p data-lang-hi="हमारी सेवाएं कई गांवों और शहरों तक पहुंचती हैं" data-lang-en="Our services reach many villages and cities">हमारी सेवाएं कई गांवों और शहरों तक पहुंचती हैं</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10k+</div>
+                            <div class="stat-label" data-lang-hi="संतुष्ट ग्राहक" data-lang-en="Happy Customers">संतुष्ट ग्राहक</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label" data-lang-hi="वर्षों का अनुभव" data-lang-en="Years of Experience">वर्षों का अनुभव</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label" data-lang-hi="सेवाएं" data-lang-en="Services">सेवाएं</div>
+                        </div>
+                    </div>
+                    
+                    <p data-lang-hi="हमारा मिशन ग्रामीण क्षेत्रों में रहने वाले लोगों को डिजिटल सेवाओं तक पहुंच प्रदान करना और उन्हें सरकारी योजनाओं का लाभ उठाने में मदद करना है।" data-lang-en="Our mission is to provide access to digital services to people living in rural areas and help them avail the benefits of government schemes.">
+                       हमारा मिशन ग्रामीण क्षेत्रों में रहने वाले लोगों को डिजिटल सेवाओं तक पहुंच प्रदान करना और उन्हें सरकारी योजनाओं का लाभ उठाने में मदद करना है।</p>
+                    <a href="#contact" class="btn" data-lang-hi="हमसे संपर्क करें" data-lang-en="Contact Us">हमसे संपर्क करें</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554224154-260325b0536c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="CSC Center">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-hi="अक्सर पूछे जाने वाले प्रश्न" data-lang-en="Frequently Asked Questions">अक्सर पूछे जाने वाले प्रश्न</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-lang-hi="सेवा केंद्र क्या है?" data-lang-en="What is a Service Center?">सेवा केंद्र क्या है?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-lang-hi="सेवा केंद्र एक ऐसा केंद्र है जो ग्रामीण और शहरी क्षेत्रों में रहने वाले लोगों को सरकारी और निजी सेवाएं प्रदान करता है। यह डिजिटल भारत कार्यक्रम का एक महत्वपूर्ण हिस्सा है।" data-lang-en="A service center is a center that provides government and private services to people living in rural and urban areas. It is an important part of the Digital India program.">
+                           सेवा केंद्र एक ऐसा केंद्र है जो ग्रामीण और शहरी क्षेत्रों में रहने वाले लोगों को सरकारी और निजी सेवाएं प्रदान करता है। यह डिजिटल भारत कार्यक्रम का एक महत्वपूर्ण हिस्सा है।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-lang-hi="आप कौन सी सेवाएं प्रदान करते हैं?" data-lang-en="What services do you provide?">आप कौन सी सेवाएं प्रदान करते हैं?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-lang-hi="हम विभिन्न प्रकार की सेवाएं प्रदान करते हैं जैसे सरकारी फॉर्म भरना, बैंकिंग सेवाएं, प्रमाण पत्र बनाना, बीमा सेवाएं, डिजिटल सेवाएं, शिक्षा संबंधी सेवाएं, आवास सेवाएं और कृषि सेवाएं।" data-lang-en="We provide various types of services such as filling government forms, banking services, making certificates, insurance services, digital services, education related services, housing services and agriculture services.">
+                           हम विभिन्न प्रकार की सेवाएं प्रदान करते हैं जैसे सरकारी फॉर्म भरना, बैंकिंग सेवाएं, प्रमाण पत्र बनाना, बीमा सेवाएं, डिजिटल सेवाएं, शिक्षा संबंधी सेवाएं, आवास सेवाएं और कृषि सेवाएं।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-lang-hi="क्या आपकी सेवाएं निःशुल्क हैं?" data-lang-en="Are your services free?">क्या आपकी सेवाएं निःशुल्क हैं?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-lang-hi="कुछ बुनियादी सेवाएं निःशुल्क हैं, लेकिन कुछ सेवाओं के लिए हम एक छोटा शुल्क लेते हैं। हमारा उद्देश्य लोगों को सरकारी योजनाओं का लाभ उठाने में मदद करना है, इसलिए हमारे शुल्क बहुत कम हैं।" data-lang-en="Some basic services are free, but for some services we charge a small fee. Our aim is to help people avail the benefits of government schemes, so our fees are very low.">
+                           कुछ बुनियादी सेवाएं निःशुल्क हैं, लेकिन कुछ सेवाओं के लिए हम एक छोटा शुल्क लेते हैं। हमारा उद्देश्य लोगों को सरकारी योजनाओं का लाभ उठाने में मदद करना है, इसलिए हमारे शुल्क बहुत कम हैं।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-lang-hi="मैं कैसे सरकारी योजनाओं के लिए आवेदन कर सकता हूं?" data-lang-en="How can I apply for government schemes?">मैं कैसे सरकारी योजनाओं के लिए आवेदन कर सकता हूं?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-lang-hi="आप हमारे सेवा केंद्र पर आकर सरकारी योजनाओं के लिए आवेदन कर सकते हैं। हमारी टीम आपको आवेदन प्रक्रिया में पूरी सहायता प्रदान करेगी। आप हमें कॉल भी कर सकते हैं या हमारी वेबसाइट पर ऑनलाइन आवेदन कर सकते हैं।" data-lang-en="You can apply for government schemes by visiting our service center. Our team will provide you complete assistance in the application process. You can also call us or apply online on our website.">
+                           आप हमारे सेवा केंद्र पर आकर सरकारी योजनाओं के लिए आवेदन कर सकते हैं। हमारी टीम आपको आवेदन प्रक्रिया में पूरी सहायता प्रदान करेगी। आप हमें कॉल भी कर सकते हैं या हमारी वेबसाइट पर ऑनलाइन आवेदन कर सकते हैं।</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-lang-hi="आपका सेवा केंद्र कहाँ स्थित है?" data-lang-en="Where is your service center located?">आपका सेवा केंद्र कहाँ स्थित है?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-lang-hi="हमारा सेवा केंद्र Mahatma Jyotiba Phule Public School ke pass, Mundrawaja, Joura, Morena, MP 476221 पर स्थित है। हम सोमवार से शनिवार सुबह 9:00 बजे से शाम 6:00 बजे तक खुले रहते हैं।" data-lang-en="Our service center is located at Near Mahatma Jyotiba Phule Public School, Mundrawaja, Joura, Morena, MP 476221. We are open from Monday to Saturday from 9:00 AM to 6:00 PM.">
+                           हमारा सेवा केंद्र Mahatma Jyotiba Phule Public School ke pass, Mundrawaja, Joura, Morena, MP 476221 पर स्थित है। हम सोमवार से शनिवार सुबह 9:00 बजे से शाम 6:00 बजे तक खुले रहते हैं।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang-hi="संपर्क करें" data-lang-en="Contact Us">संपर्क करें</h2>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" data-lang-hi="आपका नाम" data-lang-en="Your Name">आपका नाम</label>
+                        <input type="text" id="name" name="name" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-lang-hi="ईमेल पता" data-lang-en="Email Address">ईमेल पता</label>
+                        <input type="email" id="email" name="email" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" data-lang-hi="फोन नंबर" data-lang-en="Phone Number">फोन नंबर</label>
+                        <input type="tel" id="phone" name="phone" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="service" data-lang-hi="सेवा चुनें" data-lang-en="Select Service">सेवा चुनें</label>
+                        <select id="service" name="service" required="">
+                            <option value="" data-lang-hi="-- सेवा चुनें --" data-lang-en="-- Select Service --">-- सेवा चुनें --</option>
+                            <option value="schemes" data-lang-hi="सरकारी योजनाएं" data-lang-en="Government Schemes">सरकारी योजनाएं</option>
+                            <option value="forms" data-lang-hi="सरकारी फॉर्म" data-lang-en="Government Forms">सरकारी फॉर्म</option>
+                            <option value="banking" data-lang-hi="बैंकिंग सेवाएं" data-lang-en="Banking Services">बैंकिंग सेवाएं</option>
+                            <option value="insurance" data-lang-hi="बीमा सेवाएं" data-lang-en="Insurance Services">बीमा सेवाएं</option>
+                            <option value="certificates" data-lang-hi="प्रमाण पत्र सेवाएं" data-lang-en="Certificate Services">प्रमाण पत्र सेवाएं</option>
+                            <option value="other" data-lang-hi="अन्य" data-lang-en="Other">अन्य</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-lang-hi="संदेश" data-lang-en="Message">संदेश</label>
+                        <textarea id="message" name="message" required=""></textarea>
+                    </div>
+                    <button type="submit" class="btn" data-lang-hi="संदेश भेजें" data-lang-en="Send Message">संदेश भेजें</button>
+                </form>
+                <div class="contact-info">
+                    <h3 data-lang-hi="हमसे संपर्क करें" data-lang-en="Contact Us">हमसे संपर्क करें</h3>
+                    <p data-lang-hi="किसी भी प्रश्न या सुझाव के लिए, कृपया हमसे संपर्क करें। हम जल्द से जल्द आपके पास वापस आएंगे।" data-lang-en="For any questions or suggestions, please contact us. We will get back to you as soon as possible.">
+                       किसी भी प्रश्न या सुझाव के लिए, कृपया हमसे संपर्क करें। हम जल्द से जल्द आपके पास वापस आएंगे।</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4 data-lang-hi="ईमेल" data-lang-en="Email">ईमेल</h4>
+                            <p>thesuraj.csc@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h4 data-lang-hi="फोन" data-lang-en="Phone">फोन</h4>
+                            <p>8516023481, 7694837913</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4 data-lang-hi="पता" data-lang-en="Address">पता</h4>
+                            <p data-lang-hi="Mahatma Jyotiba Phule Public School ke pass, Mundrawaja, Joura, Morena, MP 476221" data-lang-en="Near Mahatma Jyotiba Phule Public School, Mundrawaja, Joura, Morena, MP 476221">Mahatma Jyotiva Phule Public School ke Pass, Mundrawaja, Joura, Morena, MP 476221</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4 data-lang-hi="समय" data-lang-en="Timings">समय</h4>
+                            <p data-lang-hi="सोमवार से शनिवार: सुबह 9:00 बजे से शाम 6:00 बजे तक" data-lang-en="Monday to Saturday: 9:00 AM to 6:00 PM">
+                               सोमवार से शनिवार: सुबह 9:00 बजे से शाम 6:00 बजे तक</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-lang-hi="सूरज ऑनलाइन सेवाएं केंद्र" data-lang-en="The Suraj Online Services Center">सूरज ऑनलाइन सेवाएं केंद्र</h3>
+                    <p data-lang-hi="हम एक विश्वसनीय सेवा केंद्र हैं जो ग्रामीण और शहरी क्षेत्रों में रहने वाले लोगों को सरकारी और निजी सेवाएं प्रदान करते हैं।" data-lang-en="We are a reliable service center that provides government and private services to people living in rural and urban areas.">
+                       हम एक विश्वसनीय सेवा केंद्र हैं जो ग्रामीण और शहरी क्षेत्रों में रहने वाले लोगों को सरकारी और निजी सेवाएं प्रदान करते हैं।</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang-hi="त्वरित लिंक" data-lang-en="Quick Links">त्वरित लिंक</h3>
+                    <ul>
+                        <li><a href="#home" data-lang-hi="होम" data-lang-en="Home">होम</a></li>
+                        <li><a href="#services" data-lang-hi="सेवाएं" data-lang-en="Services">सेवाएं</a></li>
+                        <li><a href="#schemes" data-lang-hi="सरकारी योजनाएं" data-lang-en="Govt. Schemes">सरकारी योजनाएं</a></li>
+                        <li><a href="#forms" data-lang-hi="फॉर्म" data-lang-en="Forms">फॉर्म</a></li>
+                        <li><a href="#about" data-lang-hi="हमारे बारे में" data-lang-en="About Us">हमारे बारे में</a></li>
+                        <li><a href="#contact" data-lang-hi="संपर्क" data-lang-en="Contact">संपर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang-hi="हमारी सेवाएं" data-lang-en="Our Services">हमारी सेवाएं</h3>
+                    <ul>
+                        <li data-lang-hi="सरकारी फॉर्म" data-lang-en="Government Forms">सरकारी फॉर्म</li>
+                        <li data-lang-hi="बैंकिंग सेवाएं" data-lang-en="Banking Services">बैंकिंग सेवाएं</li>
+                        <li data-lang-hi="प्रमाण पत्र सेवाएं" data-lang-en="Certificate Services">प्रमाण पत्र सेवाएं</li>
+                        <li data-lang-hi="बीमा सेवाएं" data-lang-en="Insurance Services">बीमा सेवाएं</li>
+                        <li data-lang-hi="डिजिटल सेवाएं" data-lang-en="Digital Services">डिजिटल सेवाएं</li>
+                        <li data-lang-hi="शिक्षा सेवाएं" data-lang-en="Education Services">शिक्षा सेवाएं</li>
+                        <li data-lang-hi="आवास सेवाएं" data-lang-en="Housing Services">आवास सेवाएं</li>
+                        <li data-lang-hi="कृषि सेवाएं" data-lang-en="Agriculture Services">कृषि सेवाएं</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang-hi="संपर्क जानकारी" data-lang-en="Contact Information">संपर्क जानकारी</h3>
+                    <p>📧 thesuraj.csc@gmail.com</p>
+                    <p>📱 8516023481, 7694837913</p>
+                    <p data-lang-hi="📍 Mahatma Jyotiba Phule Public School ke pass, Mundrawaja, Joura, Morena, MP 476221" data-lang-en="📍 Near Mahatma Jyotiba Phule Public School, Mundrawaja, Joura, Morena, MP 476221">📍 Mahatma Jyotiva Phule Public School ke Pass, Mundrawaja, Joura, Morena, MP 476221</p>
+                    <p data-lang-hi="🕒 सोम-शनि: 9AM - 6PM" data-lang-en="🕒 Mon-Sat: 9AM - 6PM">🕒 सोम-शनि: 9AM - 6PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p data-lang-hi="© 2023 सूरज ऑनलाइन सेवाएं केंद्र। सर्वाधिकार सुरक्षित।" data-lang-en="© 2023 The Suraj Online Services Center. All Rights Reserved.">© 2021 द सूरज ऑनलाइन सेवाएं केंद्र। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        // Language Toggle Functionality
+        const langToggle = document.getElementById('langToggle');
+        const html = document.documentElement;
+        
+        // Set default language to Hindi
+        let currentLang = 'hi';
+        
+        // Function to update language
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-lang-hi]');
+            
+            elements.forEach(element => {
+                if (currentLang === 'hi') {
+                    element.textContent = element.getAttribute('data-lang-hi');
+                } else {
+                    element.textContent = element.getAttribute('data-lang-en');
+                }
+            });
+            
+            // Update HTML lang attribute
+            html.setAttribute('lang', currentLang);
+            
+            // Store language preference in localStorage
+            localStorage.setItem('preferredLanguage', currentLang);
+        }
+        
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            currentLang = savedLang;
+            langToggle.checked = currentLang === 'en';
+            updateLanguage();
+        }
+        
+        // Toggle language when switch is clicked
+        langToggle.addEventListener('change', function() {
+            currentLang = this.checked ? 'en' : 'hi';
+            updateLanguage();
+        });
+        
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Form Submission Handler
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (name && email && phone && service && message) {
+                // Create success message
+                const successMessage = document.createElement('div');
+                successMessage.style.backgroundColor = '#138808';
+                successMessage.style.color = 'white';
+                successMessage.style.padding = '15px';
+                successMessage.style.borderRadius = '5px';
+                successMessage.style.marginTop = '20px';
+                successMessage.style.textAlign = 'center';
+                
+                if (currentLang === 'hi') {
+                    successMessage.textContent = `धन्यवाद, ${name}! आपका संदेश सफलतापूर्वक भेज दिया गया है। हम जल्द ही आपसे संपर्क करेंगे।`;
+                } else {
+                    successMessage.textContent = `Thank you, ${name}! Your message has been sent successfully. We will contact you soon.`;
+                }
+                
+                // Add success message to form
+                contactForm.appendChild(successMessage);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Remove success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 5000);
+            }
+        });
+        
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body></html>
